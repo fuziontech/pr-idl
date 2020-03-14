@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "pr";
+option java_outer_classname = "PositionReport";
+option go_package = "pb;pb";
+
+package pb;
+
+// The request message containing the user's name.
+message Message {
+    string type = 1; 
+    string messageId = 2;
+    string timestamp = 3;
+    string sentAt = 4; 
+}
+
+message Batch {
+    map<string, string> context = 1;
+    repeated Identify identifies = 2;
+    repeated Group groups = 3;
+    repeated Track tracks = 4;
+    repeated Alias aliases = 5;  
+    Message message = 6;
+}
+
+message Context {
+    map<string, string> context = 1;
+    map<string, string> integrations = 2;
+    map<string, string> traits = 3;
+    map<string, string> properties = 4;
+    string anonymousId = 5;
+    string userId = 6;
+}
+
+message Identify {
+    Context context = 1;
+    Message message = 2;
+}
+
+message Group {
+    Context context = 1; 
+    string groupId = 2;
+    Message message = 3;
+}
+
+message Track {
+    Context context = 1;
+    string event = 2;
+    Message message = 3;
+}
+
+message Alias {
+    string previousId = 1;
+    string userId = 2;
+    Message message = 3;
+}
