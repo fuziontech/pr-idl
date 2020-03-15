@@ -9,21 +9,14 @@ option go_package = "pb;pb";
 
 package pb;
 
-// The request message containing the user's name.
-message Message {
-    string type = 1; 
-    string messageId = 2;
-    google.protobuf.Timestamp timestamp = 3;
-    string sentAt = 4; 
-}
-
 message Batch {
-    map<string, string> context = 1;
-    repeated Identify identifies = 2;
-    repeated Group groups = 3;
-    repeated Track tracks = 4;
-    repeated Alias aliases = 5;  
-    Message message = 6;
+    string messageId = 1; 
+    google.protobuf.Timestamp sentAt = 2;
+    Context context = 3;
+    repeated Identify identifies = 4;
+    repeated Group groups = 5;
+    repeated Track tracks = 6;
+    repeated Alias aliases = 7;  
 }
 
 message Traits {
