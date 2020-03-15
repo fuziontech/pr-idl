@@ -24,34 +24,173 @@ message Batch {
     Message message = 6;
 }
 
+message Traits {
+    map<string, string> traits = 1;
+}
+
+message Integrations {
+    map<string, string> integrations = 1;
+}
+
+message Properties {
+    map<string, string> properties = 1;
+}
+
 message Context {
-    map<string, string> context = 1;
-    map<string, string> integrations = 2;
-    map<string, string> traits = 3;
-    map<string, string> properties = 4;
-    string anonymousId = 5;
-    string userId = 6;
+    AppInfo app = 1;
+    CampaignInfo campaign = 2;
+    DeviceInfo device = 3;
+    LibraryInfo library = 4;
+    LocationInfo location = 5;
+    NetworkInfo network = 6;
+    OSInfo os = 7;
+    PageInfo page = 8;
+    ReferrerInfo referrer = 9;
+    ScreenInfo screen = 10;
+    string ip = 11;
+    string local = 12;
+    string timezone = 13;
+    string userAgent = 14;
+    Traits traits = 15;
+}
+
+message AppInfo {
+    string name = 1;
+    string version = 2;
+    string build = 3;
+    string namespace = 4;
+}
+
+message CampaignInfo {
+    string name = 1;
+    string source = 2;
+    string medium = 3;
+    string term = 4;
+    string content = 5;
+}
+
+message DeviceInfo {
+    string id = 1;
+    string manufacturer = 2;
+    string model = 3;
+    string name = 4;
+    string type = 5;
+    string version = 6;
+    string advertisingId = 7;
+} 
+
+message LibraryInfo {
+    string name = 1;
+    string version =2;
+}
+
+message LocationInfo {
+    string city = 1;
+    string country = 2;
+    string region = 3;
+    string latitude = 4;
+    string longitude = 5;
+    string speed = 6;
+}
+
+message NetworkInfo {
+    bool bluetooth = 1;
+    bool cellular = 2;
+    bool wifi = 3;
+    string carrier = 4;
+    string signalStrength = 5;
+}
+
+message OSInfo {
+    string name = 1;
+    string version = 2;
+}
+
+message PageInfo {
+    string hash = 1;
+    string path = 2;
+    string referrer = 3;
+    string search = 4;
+    string title = 5;
+    string url = 6;
+}
+
+message ReferrerInfo {
+    string type = 1;
+    string name = 2;
+    string url = 3;
+    string link = 4;
+}
+
+message ScreenInfo {
+    int32 density = 1;
+    int32 width = 2;
+    int32 height = 3;
 }
 
 message Identify {
-    Context context = 1;
-    Message message = 2;
+    string type = 1;
+    string messageId = 2;
+    string anonymousId = 3;
+    string userId = 4;
+    string timestamp = 5;
+    Context context = 6;
+    Traits traits = 7;
+    Integrations integrations = 8;
 }
 
 message Group {
-    Context context = 1; 
-    string groupId = 2;
-    Message message = 3;
+    string type = 1;
+    string messageId = 2;
+    string userId = 3;
+    string groupId = 4;
+    string timestamp = 5;
+    Context context = 6;
+    Traits traits = 7;
+    Integrations integrations = 8;
+    
 }
 
 message Track {
-    Context context = 1;
-    string event = 2;
-    Message message = 3;
+    string type = 1;
+    string messageId = 2;
+    string anonymousId = 3;
+    string userId = 4;
+    string event = 5;
+    string timestamp = 6;
+    Context context = 7;
+    Properties properties = 8;
+    Integrations integrations = 9;
+}
+
+message Page {
+    string type = 1;
+    string anonymousId = 2;
+    string userId = 3;
+    string name = 4;
+    string timestamp = 5;
+    Context context = 6;
+    Properties properties = 7;
+    Integrations integrations = 8;
+}
+
+message Screen {
+    string type = 1;
+    string messageId = 2;
+    string userId = 3;
+    string name = 4;
+    string timestamp = 5;
+    Context context = 6;
+    Properties properties = 7;
+    Integrations integrations = 8;
 }
 
 message Alias {
-    string previousId = 1;
-    string userId = 2;
-    Message message = 3;
+    string type = 1;
+    string messageId = 2;
+    string previousId = 3; 
+    string userId = 4;
+    string timestamp = 5;
+    Context context = 6;
+    Integrations integrations = 7;
 }
