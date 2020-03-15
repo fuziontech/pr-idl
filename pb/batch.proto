@@ -24,8 +24,8 @@ message Traits {
     string address = 2;
     int32 age = 3;
     string avatar = 4;
-    string birthday = 5;
-    string createdAt = 6;
+    google.protobuf.Timestamp birthday = 5;
+    google.protobuf.Timestamp createdAt = 6;
     string description = 7;
     string email = 8;
     string firstName = 9;
