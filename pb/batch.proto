@@ -92,6 +92,7 @@ message Context {
     string timezone = 13;
     string userAgent = 14;
     Traits traits = 15;
+    map<string, string> extraFields = 16;
 }
 
 message AppInfo {

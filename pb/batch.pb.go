@@ -642,21 +642,22 @@ type Context struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	App       *AppInfo      `protobuf:"bytes,1,opt,name=app,proto3" json:"app,omitempty"`
-	Campaign  *CampaignInfo `protobuf:"bytes,2,opt,name=campaign,proto3" json:"campaign,omitempty"`
-	Device    *DeviceInfo   `protobuf:"bytes,3,opt,name=device,proto3" json:"device,omitempty"`
-	Library   *LibraryInfo  `protobuf:"bytes,4,opt,name=library,proto3" json:"library,omitempty"`
-	Location  *LocationInfo `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Network   *NetworkInfo  `protobuf:"bytes,6,opt,name=network,proto3" json:"network,omitempty"`
-	Os        *OSInfo       `protobuf:"bytes,7,opt,name=os,proto3" json:"os,omitempty"`
-	Page      *PageInfo     `protobuf:"bytes,8,opt,name=page,proto3" json:"page,omitempty"`
-	Referrer  *ReferrerInfo `protobuf:"bytes,9,opt,name=referrer,proto3" json:"referrer,omitempty"`
-	Screen    *ScreenInfo   `protobuf:"bytes,10,opt,name=screen,proto3" json:"screen,omitempty"`
-	Ip        string        `protobuf:"bytes,11,opt,name=ip,proto3" json:"ip,omitempty"`
-	Local     string        `protobuf:"bytes,12,opt,name=local,proto3" json:"local,omitempty"`
-	Timezone  string        `protobuf:"bytes,13,opt,name=timezone,proto3" json:"timezone,omitempty"`
-	UserAgent string        `protobuf:"bytes,14,opt,name=userAgent,proto3" json:"userAgent,omitempty"`
-	Traits    *Traits       `protobuf:"bytes,15,opt,name=traits,proto3" json:"traits,omitempty"`
+	App         *AppInfo          `protobuf:"bytes,1,opt,name=app,proto3" json:"app,omitempty"`
+	Campaign    *CampaignInfo     `protobuf:"bytes,2,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Device      *DeviceInfo       `protobuf:"bytes,3,opt,name=device,proto3" json:"device,omitempty"`
+	Library     *LibraryInfo      `protobuf:"bytes,4,opt,name=library,proto3" json:"library,omitempty"`
+	Location    *LocationInfo     `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
+	Network     *NetworkInfo      `protobuf:"bytes,6,opt,name=network,proto3" json:"network,omitempty"`
+	Os          *OSInfo           `protobuf:"bytes,7,opt,name=os,proto3" json:"os,omitempty"`
+	Page        *PageInfo         `protobuf:"bytes,8,opt,name=page,proto3" json:"page,omitempty"`
+	Referrer    *ReferrerInfo     `protobuf:"bytes,9,opt,name=referrer,proto3" json:"referrer,omitempty"`
+	Screen      *ScreenInfo       `protobuf:"bytes,10,opt,name=screen,proto3" json:"screen,omitempty"`
+	Ip          string            `protobuf:"bytes,11,opt,name=ip,proto3" json:"ip,omitempty"`
+	Local       string            `protobuf:"bytes,12,opt,name=local,proto3" json:"local,omitempty"`
+	Timezone    string            `protobuf:"bytes,13,opt,name=timezone,proto3" json:"timezone,omitempty"`
+	UserAgent   string            `protobuf:"bytes,14,opt,name=userAgent,proto3" json:"userAgent,omitempty"`
+	Traits      *Traits           `protobuf:"bytes,15,opt,name=traits,proto3" json:"traits,omitempty"`
+	ExtraFields map[string]string `protobuf:"bytes,16,rep,name=extraFields,proto3" json:"extraFields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *Context) Reset() {
@@ -792,6 +793,13 @@ func (x *Context) GetUserAgent() string {
 func (x *Context) GetTraits() *Traits {
 	if x != nil {
 		return x.Traits
+	}
+	return nil
+}
+
+func (x *Context) GetExtraFields() map[string]string {
+	if x != nil {
+		return x.ExtraFields
 	}
 	return nil
 }
@@ -2302,7 +2310,7 @@ var file_pb_batch_proto_rawDesc = []byte{
 	0x74, 0x72, 0x61, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10,
 	0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79,
 	0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x9a, 0x04, 0x0a, 0x07, 0x43,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x9a, 0x05, 0x0a, 0x07, 0x43,
 	0x6f, 0x6e, 0x74, 0x65, 0x78, 0x74, 0x12, 0x1d, 0x0a, 0x03, 0x61, 0x70, 0x70, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x70, 0x62, 0x2e, 0x41, 0x70, 0x70, 0x49, 0x6e, 0x66, 0x6f,
 	0x52, 0x03, 0x61, 0x70, 0x70, 0x12, 0x2c, 0x0a, 0x08, 0x63, 0x61, 0x6d, 0x70, 0x61, 0x69, 0x67,
@@ -2336,7 +2344,15 @@ var file_pb_batch_proto_rawDesc = []byte{
 	0x6e, 0x74, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x75, 0x73, 0x65, 0x72, 0x41, 0x67,
 	0x65, 0x6e, 0x74, 0x12, 0x22, 0x0a, 0x06, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x18, 0x0f, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x70, 0x62, 0x2e, 0x54, 0x72, 0x61, 0x69, 0x74, 0x73, 0x52,
-	0x06, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x22, 0x6b, 0x0a, 0x07, 0x41, 0x70, 0x70, 0x49, 0x6e,
+	0x06, 0x74, 0x72, 0x61, 0x69, 0x74, 0x73, 0x12, 0x3e, 0x0a, 0x0b, 0x65, 0x78, 0x74, 0x72, 0x61,
+	0x46, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x18, 0x10, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x70,
+	0x62, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x78, 0x74, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x46,
+	0x69, 0x65, 0x6c, 0x64, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0b, 0x65, 0x78, 0x74, 0x72,
+	0x61, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x1a, 0x3e, 0x0a, 0x10, 0x45, 0x78, 0x74, 0x72, 0x61,
+	0x46, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b,
+	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x6b, 0x0a, 0x07, 0x41, 0x70, 0x70, 0x49, 0x6e,
 	0x66, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
 	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
@@ -2548,7 +2564,7 @@ func file_pb_batch_proto_rawDescGZIP() []byte {
 	return file_pb_batch_proto_rawDescData
 }
 
-var file_pb_batch_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_pb_batch_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_pb_batch_proto_goTypes = []interface{}{
 	(*Batch)(nil),               // 0: pb.Batch
 	(*Traits)(nil),              // 1: pb.Traits
@@ -2576,10 +2592,11 @@ var file_pb_batch_proto_goTypes = []interface{}{
 	nil,                         // 23: pb.Integrations.IntegrationsEntry
 	nil,                         // 24: pb.Integrations.ExtraFieldsEntry
 	nil,                         // 25: pb.Properties.ExtraFieldsEntry
-	(*timestamp.Timestamp)(nil), // 26: google.protobuf.Timestamp
+	nil,                         // 26: pb.Context.ExtraFieldsEntry
+	(*timestamp.Timestamp)(nil), // 27: google.protobuf.Timestamp
 }
 var file_pb_batch_proto_depIdxs = []int32{
-	26, // 0: pb.Batch.sentAt:type_name -> google.protobuf.Timestamp
+	27, // 0: pb.Batch.sentAt:type_name -> google.protobuf.Timestamp
 	5,  // 1: pb.Batch.context:type_name -> pb.Context
 	16, // 2: pb.Batch.identifies:type_name -> pb.Identify
 	17, // 3: pb.Batch.groups:type_name -> pb.Group
@@ -2601,34 +2618,35 @@ var file_pb_batch_proto_depIdxs = []int32{
 	14, // 19: pb.Context.referrer:type_name -> pb.ReferrerInfo
 	15, // 20: pb.Context.screen:type_name -> pb.ScreenInfo
 	1,  // 21: pb.Context.traits:type_name -> pb.Traits
-	26, // 22: pb.Identify.timestamp:type_name -> google.protobuf.Timestamp
-	5,  // 23: pb.Identify.context:type_name -> pb.Context
-	1,  // 24: pb.Identify.traits:type_name -> pb.Traits
-	2,  // 25: pb.Identify.integrations:type_name -> pb.Integrations
-	26, // 26: pb.Group.timestamp:type_name -> google.protobuf.Timestamp
-	5,  // 27: pb.Group.context:type_name -> pb.Context
-	1,  // 28: pb.Group.traits:type_name -> pb.Traits
-	2,  // 29: pb.Group.integrations:type_name -> pb.Integrations
-	26, // 30: pb.Track.timestamp:type_name -> google.protobuf.Timestamp
-	5,  // 31: pb.Track.context:type_name -> pb.Context
-	4,  // 32: pb.Track.properties:type_name -> pb.Properties
-	2,  // 33: pb.Track.integrations:type_name -> pb.Integrations
-	26, // 34: pb.Page.timestamp:type_name -> google.protobuf.Timestamp
-	5,  // 35: pb.Page.context:type_name -> pb.Context
-	4,  // 36: pb.Page.properties:type_name -> pb.Properties
-	2,  // 37: pb.Page.integrations:type_name -> pb.Integrations
-	26, // 38: pb.Screen.timestamp:type_name -> google.protobuf.Timestamp
-	5,  // 39: pb.Screen.context:type_name -> pb.Context
-	4,  // 40: pb.Screen.properties:type_name -> pb.Properties
-	2,  // 41: pb.Screen.integrations:type_name -> pb.Integrations
-	26, // 42: pb.Alias.timestamp:type_name -> google.protobuf.Timestamp
-	5,  // 43: pb.Alias.context:type_name -> pb.Context
-	2,  // 44: pb.Alias.integrations:type_name -> pb.Integrations
-	45, // [45:45] is the sub-list for method output_type
-	45, // [45:45] is the sub-list for method input_type
-	45, // [45:45] is the sub-list for extension type_name
-	45, // [45:45] is the sub-list for extension extendee
-	0,  // [0:45] is the sub-list for field type_name
+	26, // 22: pb.Context.extraFields:type_name -> pb.Context.ExtraFieldsEntry
+	27, // 23: pb.Identify.timestamp:type_name -> google.protobuf.Timestamp
+	5,  // 24: pb.Identify.context:type_name -> pb.Context
+	1,  // 25: pb.Identify.traits:type_name -> pb.Traits
+	2,  // 26: pb.Identify.integrations:type_name -> pb.Integrations
+	27, // 27: pb.Group.timestamp:type_name -> google.protobuf.Timestamp
+	5,  // 28: pb.Group.context:type_name -> pb.Context
+	1,  // 29: pb.Group.traits:type_name -> pb.Traits
+	2,  // 30: pb.Group.integrations:type_name -> pb.Integrations
+	27, // 31: pb.Track.timestamp:type_name -> google.protobuf.Timestamp
+	5,  // 32: pb.Track.context:type_name -> pb.Context
+	4,  // 33: pb.Track.properties:type_name -> pb.Properties
+	2,  // 34: pb.Track.integrations:type_name -> pb.Integrations
+	27, // 35: pb.Page.timestamp:type_name -> google.protobuf.Timestamp
+	5,  // 36: pb.Page.context:type_name -> pb.Context
+	4,  // 37: pb.Page.properties:type_name -> pb.Properties
+	2,  // 38: pb.Page.integrations:type_name -> pb.Integrations
+	27, // 39: pb.Screen.timestamp:type_name -> google.protobuf.Timestamp
+	5,  // 40: pb.Screen.context:type_name -> pb.Context
+	4,  // 41: pb.Screen.properties:type_name -> pb.Properties
+	2,  // 42: pb.Screen.integrations:type_name -> pb.Integrations
+	27, // 43: pb.Alias.timestamp:type_name -> google.protobuf.Timestamp
+	5,  // 44: pb.Alias.context:type_name -> pb.Context
+	2,  // 45: pb.Alias.integrations:type_name -> pb.Integrations
+	46, // [46:46] is the sub-list for method output_type
+	46, // [46:46] is the sub-list for method input_type
+	46, // [46:46] is the sub-list for extension type_name
+	46, // [46:46] is the sub-list for extension extendee
+	0,  // [0:46] is the sub-list for field type_name
 }
 
 func init() { file_pb_batch_proto_init() }
@@ -2908,7 +2926,7 @@ func file_pb_batch_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pb_batch_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   26,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
