@@ -189,12 +189,13 @@ message Identify {
 message Group {
     string type = 1;
     string messageId = 2;
-    string userId = 3;
-    string groupId = 4;
-    google.protobuf.Timestamp timestamp = 5;
-    Context context = 6;
-    Traits traits = 7;
-    Integrations integrations = 8;
+    string anonymousId = 3;
+    string userId = 4;
+    string groupId = 5;
+    google.protobuf.Timestamp timestamp = 6;
+    Context context = 7;
+    Traits traits = 8;
+    Integrations integrations = 9;
     
 }
 
