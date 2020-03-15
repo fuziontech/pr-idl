@@ -226,12 +226,13 @@ message Page {
 message Screen {
     string type = 1;
     string messageId = 2;
-    string userId = 3;
-    string name = 4;
-    google.protobuf.Timestamp timestamp = 5;
-    Context context = 6;
-    Properties properties = 7;
-    Integrations integrations = 8;
+    string anonymousId = 3;
+    string userId = 4;
+    string name = 5;
+    google.protobuf.Timestamp timestamp = 6;
+    Context context = 7;
+    Properties properties = 8;
+    Integrations integrations = 9;
 }
 
 message Alias {
