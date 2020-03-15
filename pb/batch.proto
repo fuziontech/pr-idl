@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option java_multiple_files = true;
 option java_package = "pr";
 option java_outer_classname = "PositionReport";
@@ -11,7 +13,7 @@ package pb;
 message Message {
     string type = 1; 
     string messageId = 2;
-    string timestamp = 3;
+    google.protobuf.Timestamp timestamp = 3;
     string sentAt = 4; 
 }
 
@@ -25,15 +27,59 @@ message Batch {
 }
 
 message Traits {
-    map<string, string> traits = 1;
+    map<string, string> extraFields= 1;
+    string address = 2;
+    int32 age = 3;
+    string avatar = 4;
+    string birthday = 5;
+    string createdAt = 6;
+    string description = 7;
+    string email = 8;
+    string firstName = 9;
+    string lastName = 10;
+    string name = 11;
+    string gender = 12;
+    string phone = 13;
+    string title = 14;
+    string username = 15;
+    string website = 16;
 }
 
 message Integrations {
-    map<string, string> integrations = 1;
+    map<string, bool> integrations = 1;
+    map<string, string> extraFields = 2;
+}
+
+message Product {
+    string id = 1;
+    string sku = 2;
+    string name = 3;
+    double price = 4;
 }
 
 message Properties {
-    map<string, string> properties = 1;
+    map<string, string> extraFields = 1;
+    double revenue = 2;
+    string currency = 3;
+    double value = 4;
+    string path = 5;
+    string referrer = 6;
+    string title = 7;
+    string url = 8;
+    string name = 9;
+    string category = 10;
+    string sku = 11;
+    double price = 12;
+    string id = 13;
+    string orderId = 14;
+    double total = 15;
+    double subtotal = 16;
+    double shipping = 17;
+    double tax = 18;
+    double discount = 19;
+    string coupon = 20;
+    repeated Product products = 21;
+    bool repeat = 22;
 }
 
 message Context {
@@ -133,7 +179,7 @@ message Identify {
     string messageId = 2;
     string anonymousId = 3;
     string userId = 4;
-    string timestamp = 5;
+    google.protobuf.Timestamp timestamp = 5;
     Context context = 6;
     Traits traits = 7;
     Integrations integrations = 8;
@@ -144,7 +190,7 @@ message Group {
     string messageId = 2;
     string userId = 3;
     string groupId = 4;
-    string timestamp = 5;
+    google.protobuf.Timestamp timestamp = 5;
     Context context = 6;
     Traits traits = 7;
     Integrations integrations = 8;
@@ -157,7 +203,7 @@ message Track {
     string anonymousId = 3;
     string userId = 4;
     string event = 5;
-    string timestamp = 6;
+    google.protobuf.Timestamp timestamp = 6;
     Context context = 7;
     Properties properties = 8;
     Integrations integrations = 9;
@@ -168,7 +214,7 @@ message Page {
     string anonymousId = 2;
     string userId = 3;
     string name = 4;
-    string timestamp = 5;
+    google.protobuf.Timestamp timestamp = 5;
     Context context = 6;
     Properties properties = 7;
     Integrations integrations = 8;
@@ -179,7 +225,7 @@ message Screen {
     string messageId = 2;
     string userId = 3;
     string name = 4;
-    string timestamp = 5;
+    google.protobuf.Timestamp timestamp = 5;
     Context context = 6;
     Properties properties = 7;
     Integrations integrations = 8;
@@ -190,7 +236,7 @@ message Alias {
     string messageId = 2;
     string previousId = 3; 
     string userId = 4;
-    string timestamp = 5;
+    google.protobuf.Timestamp timestamp = 5;
     Context context = 6;
     Integrations integrations = 7;
 }
