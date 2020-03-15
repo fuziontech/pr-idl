@@ -80,6 +80,7 @@ message Properties {
     string coupon = 20;
     repeated Product products = 21;
     bool repeat = 22;
+    string productId = 23;
 }
 
 message Context {
